@@ -1,0 +1,33 @@
+{
+  "name": "qebot",
+  "version": "1.0.0",
+  "description": "A messenger bot that acts as a service for Queens Events",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bearguy/QEbot.git"
+  },
+  "keywords": [
+    "bot",
+    "nlp",
+    "events",
+    "express",
+    "mongo"
+  ],
+  "author": "Stephen Peterkins (Bearguy)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bearguy/QEbot/issues"
+  },
+  "homepage": "https://github.com/Bearguy/QEbot#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mongoose": "^4.9.5",
+    "node-wit": "^4.2.0",
+    "request": "^2.81.0"
+  }
+}
