@@ -1,6 +1,7 @@
 var express = require("express");
 var request = require("request");
 var bodyParser = require("body-parser");
+var Wit = require('node-wit').Wit;
 
 var app = express();
 app.use(bodyParser.urlencoded({extended: false}));
@@ -30,9 +31,9 @@ app.post("/webhook", function (req, res) {
   if (req.body.object == "page") {
     // Iterate over each entry
     // There may be multiple entries if batched
-    req.body.entry.forEach(function(entry) {
+    req.body.entry.forEach((entry) => {
       // Iterate over each messaging event
-      entry.messaging.forEach(function(event) {
+      entry.messaging.forEach((event) => {
         if (event.postback) {
           processPostback(event);
         }
@@ -57,7 +58,7 @@ function processPostback(event) {
         fields: "first_name"
       },
       method: "GET"
-    }, function(error, response, body) {
+    }, (error, response, body) => {
       var greeting = "";
       if (error) {
         console.log("Error getting user's name: " +  error);
@@ -66,7 +67,7 @@ function processPostback(event) {
         name = bodyObj.first_name;
         greeting = "Hi " + name + ". ";
       }
-      var message = greeting + "My name is SP Movie Bot. I can tell you various details regarding movies. What movie would you like to know about?";
+      var message = greeting + "My name is QEbot Bot. I can tell you various details regarding events. What events would you like to know about?";
       sendMessage(senderId, {text: message});
     });
   }
@@ -82,7 +83,7 @@ function sendMessage(recipientId, message) {
       recipient: {id: recipientId},
       message: message,
     }
-  }, function(error, response, body) {
+  }, (error, response, body) => {
     if (error) {
       console.log("Error sending message: " + response.error);
     }
