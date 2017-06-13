@@ -22,7 +22,7 @@ const sender = {
       }
     };
 
-    callSendAPI(messageData);
+    this.callSendAPI(messageData);
   },
 
   // send location prompt to gain local data from user
@@ -40,7 +40,7 @@ const sender = {
         ]
       }
     }
-    callSendAPI(messageData);
+    this.callSendAPI(messageData);
   },
 
   sendLocalEventFilterChoice(recipientId) {
@@ -69,7 +69,7 @@ const sender = {
         ]
       }
     }
-    callSendAPI(choiceData);
+    this.callSendAPI(choiceData);
   },
 
   // send event data following the generic template
@@ -137,7 +137,7 @@ const sender = {
         }
       );
     })
-    callSendAPI(messageData);
+    this.this.callSendAPI(messageData);
   },
 
   sendEventGenericMessage(recipientId, eventObjectList) {
@@ -180,7 +180,7 @@ const sender = {
       );
     }
 
-    callSendAPI(messageData);
+    this.callSendAPI(messageData);
   },
 
   sendGenericMessage(recipientId) {
@@ -228,7 +228,7 @@ const sender = {
       }
     };
 
-    callSendAPI(messageData);
+    this.callSendAPI(messageData);
   },
 
   callSendAPI(messageData) {
