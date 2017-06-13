@@ -13,7 +13,7 @@ let sender = require('../helper/send-helper');
 
 // Our bot actions
 const actions = {
-  send({sessionId}, {text}, {context}) {
+  say(sessionId, text, context) {
     // Our bot has something to say!
     // Let's retrieve the Facebook user whose session belongs to
     const recipientId = context._fbid_;
