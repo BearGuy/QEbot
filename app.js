@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.listen((process.env.PORT || 5000));
 
+const sessions = {}; //eventually will be stored in redis to track people's usage of it
 // Server index page
 app.get("/", function (req, res) {
   res.send("Deployed!");
