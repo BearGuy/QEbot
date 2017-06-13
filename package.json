@@ -25,8 +25,10 @@
   },
   "homepage": "https://github.com/Bearguy/QEbot#readme",
   "dependencies": {
+    "axios": "^0.16.2",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "facebook-events-by-location-core": "^0.3.0",
     "mongoose": "^4.9.5",
     "node-wit": "^4.2.0",
     "request": "^2.81.0"

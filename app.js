@@ -1,7 +1,9 @@
 var express = require("express");
 var request = require("request");
 var bodyParser = require("body-parser");
-var Wit = require('node-wit').Wit;
+var wit = require('./wit/bot');
+
+var sendHelper = require('./helper/send-helper');
 
 var app = express();
 app.use(bodyParser.urlencoded({extended: false}));
@@ -28,14 +30,23 @@ app.get("/webhook", function (req, res) {
 // All callbacks for Messenger will be POST-ed here
 app.post("/webhook", function (req, res) {
   // Make sure this is a page subscription
-  if (req.body.object == "page") {
+  var data = req.body;
+  if (data.object === 'page') {
     // Iterate over each entry
     // There may be multiple entries if batched
-    req.body.entry.forEach((entry) => {
+
+    data.entry.forEach((entry) => {
       // Iterate over each messaging event
+      var pageID = entry.id;
+      var timeofEvent = entry.time;
+
       entry.messaging.forEach((event) => {
         if (event.postback) {
           processPostback(event);
+        } else if(event.message) {
+          processMessage(event);
+        } else {
+          console.log("Webhook received unknow event: ", event);
         }
       });
     });
@@ -73,6 +84,86 @@ function processPostback(event) {
   }
 }
 
+function receivedMessage(event) {
+  var senderID = event.sender.id;
+  var recipientID = event.recipient.id;
+  var timeOfMessage = event.timestamp;
+  var message = event.message;
+
+  console.log("Received message for user %d and page %d at %d with message:",
+    senderID, recipientID, timeOfMessage);
+  console.log(JSON.stringify(message));
+
+  var messageId = message.mid;
+  var messageText = message.text;
+  var messageAttachments = message.attachments;
+  //const {text, attachments} = message;
+  const sessionId = findOrCreateSession(senderID);
+
+  if (messageText) {
+
+    // If we receive a text message, check to see if it matches a keyword
+    // and send back the template example. Otherwise, just echo the text we received.
+    if(messageText === 'Popular' || messageText === 'Close' || messageText === 'Soon') {
+        filterChoice = messageText;
+        sendHelper.sendLocationPrompt(sessions[sessionId].fbid);
+        // We retrieve the user's current session, or create one if it doesn't exist
+        // This is needed for our bot to figure out the conversation history
+     } else {
+        wit.runActions(
+              sessionId, // the user's current session
+              messageText, // the user's message
+              //messageAttachments, // the users data
+              sessions[sessionId].context // the user's current session state
+            ).then((context) => {
+
+              console.log("sessions context")
+              console.log(sessions[sessionId].context)
+
+              // Our bot did everything it has to do.
+              // Now it's waiting for further messages to proceed.
+              console.log('Waiting for next user messages');
+
+              // Based on the session state, you might want to reset the session.
+              // This depends heavily on the business logic of your bot.
+              // Example:
+              // if (context['done']) {
+              //delete sessions[sessionId];
+              // }
+
+              // Updating the user's current session state
+              //sessions[sessionId].context = context;
+            })
+            .catch((err) => {
+              console.error('Oops! Got an error from Wit: ', err.stack || err);
+            })
+      }
+    } else if (messageAttachments) {
+      if (messageAttachments[0].type === "location"){
+        //sendLocalEventFilterChoice(senderID);
+        var sortBy;
+        switch(filterChoice){
+          case 'Close':
+            sortBy = 'distance'
+            break;
+          case 'Soon':
+            sortBy = 'time'
+            break;
+          case 'Popular':
+            sortBy = 'popularity';
+            break;
+          default:
+            break;
+        }
+        let {lat, long} = messageAttachments[0].payload.coordinates
+        getLocalEvents(senderID, lat, long, sortBy, null); //senderID
+
+    } else {
+      sendTextMessage(senderID, "Message with attachment received");
+    }
+  }
+}
+
 // sends message to user
 function sendMessage(recipientId, message) {
   request({
@@ -89,3 +180,28 @@ function sendMessage(recipientId, message) {
     }
   });
 }
+
+function receivedPostback(event) {
+  var senderID = event.sender.id;
+  var recipientID = event.recipient.id;
+  var timeOfPostback = event.timestamp;
+
+  // The 'payload' param is a developer-defined field which is set in a postback
+  // button for Structured Messages.
+  var payload = event.postback.payload;
+
+  console.log("Received postback for user %d and page %d with payload '%s' " +
+    "at %d", senderID, recipientID, payload, timeOfPostback);
+
+  // When a postback is called, we'll send a message back to the sender to
+  // let them know it was successful
+  sendTextMessage(senderID, "Postback called");
+}
+
+/*
+
+//////////////////////////
+// Sending helpers
+//////////////////////////
+
+*/
