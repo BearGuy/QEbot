@@ -97,7 +97,7 @@ const findOrCreateSession = (fbid) => {
   if (!sessionId) {
     // No session found for user fbid, let's create a new one
     sessionId = new Date().toISOString();
-    sessions[sessionId] = {fbid: fbid, context: { __fbid__: fbid }};
+    sessions[sessionId] = {fbid: fbid, context: { _fbid_: fbid }};
   }
   return sessionId;
 };

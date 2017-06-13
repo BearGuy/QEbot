@@ -16,7 +16,7 @@ const actions = {
   send({sessionId}, {text}, {context}) {
     // Our bot has something to say!
     // Let's retrieve the Facebook user whose session belongs to
-    const recipientId = context.__fbid__ || sessions[sessionId].fbid;
+    const recipientId = context._fbid_;
     if (recipientId) {
       // Yay, we found our recipient!
       // Let's forward our bot response to her.
