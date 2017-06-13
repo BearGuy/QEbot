@@ -3,6 +3,8 @@ var request = require("request");
 var bodyParser = require("body-parser");
 var wit = require('./wit/bot');
 
+const sessions = require('./sessions');
+
 var sendHelper = require('./helper/send-helper');
 
 var app = express();
@@ -10,7 +12,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.listen((process.env.PORT || 5000));
 
-const sessions = {}; //eventually will be stored in redis to track people's usage of it
+//const sessions = {}; //eventually will be stored in redis to track people's usage of it
 // Server index page
 app.get("/", function (req, res) {
   res.send("Deployed!");
