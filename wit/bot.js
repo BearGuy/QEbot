@@ -4,7 +4,7 @@ const log = require('node-wit').log;
 const sessions = require('../sessions');
 
 let qremAPI = require('../http/http-qrem');
-let sender = require('../helper/send-helper');
+let sendHelper = require('../helper/send-helper');
 
 // ----------------------------------------------------------------------------
 // Wit.ai bot specific code
@@ -23,7 +23,7 @@ const actions = {
       // Yay, we found our recipient!
       // Let's forward our bot response to her.
       // We return a promise to let our bot know when we're done sending
-      return fbMessage(recipientId, text)
+      return sendHelper.sendTextMessage(recipientId, text)
       .then(() => null)
       .catch((err) => {
         console.error(
@@ -105,7 +105,7 @@ const actions = {
 
         console.log(sessions[sessionId]);
 
-        sender.sendEventGenericMessage(sessions[sessionId].fbid, context.events);
+        sendHelper.sendEventGenericMessage(sessions[sessionId].fbid, context.events);
 
         //return context;
       })

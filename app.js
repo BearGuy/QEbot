@@ -179,7 +179,7 @@ function receivedMessage(event) {
         getLocalEvents(senderID, lat, long, sortBy, null); //senderID
 
     } else {
-      sendTextMessage(senderID, "Message with attachment received");
+      sendHelper.sendTextMessage(senderID, "Message with attachment received");
     }
   }
 }
@@ -215,7 +215,7 @@ function receivedPostback(event) {
 
   // When a postback is called, we'll send a message back to the sender to
   // let them know it was successful
-  sendTextMessage(senderID, "Postback called");
+  sendHelper.sendTextMessage(senderID, "Postback called");
 }
 
 /*
