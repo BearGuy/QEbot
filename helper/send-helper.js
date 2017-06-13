@@ -73,7 +73,7 @@ const sender = {
   },
 
   // send event data following the generic template
-  sendLocalEventGenericMessage(recipientId, eventObjectList) {
+  sendLocalEventGenericMessage(recipientId, events) {
     var messageData = {
       recipient: {
         id: recipientId
@@ -89,20 +89,42 @@ const sender = {
       }
     };
 
-    for (let e in eventObjectList) {
+    // for (let e in eventObjectList) {
 
-      let dateTime = new Date(Date.parse(eventObjectList[e].startTime))
+    //   let dateTime = new Date(Date.parse(eventObjectList[e].starttime))
 
-      let item_url = 'https://facebook.com/events/' + eventObjectList[e].id;
-      let {city, state, country} = eventObjectList[e].venue.location;
-      let location = `\n${eventObjectList[e].venue.name}\n${city}, ${state}, ${country}`
+    //   let item_url = eventO//'https://facebook.com/events/' + eventObjectList[e].id;
+    //   let {city, state, country} = eventObjectList[e].venue.location;
+    //   let location = `\n${eventObjectList[e].venue.name}\n${city}, ${state}, ${country}`
+
+    //   messageData.message.attachment.payload.elements.push(
+    //     {
+    //       title: eventObjectList[e].name,
+    //       subtitle: dateToReadableString(dateTime) + location,
+    //       item_url: item_url,
+    //       image_url: eventObjectList[e].coverPicture,
+    //       buttons: [{
+    //         type: 'web_url',
+    //         url: item_url,
+    //         title: 'Learn More',
+    //       },
+    //       {
+    //         type: "element_share"
+    //       }
+    //       ],
+    //     }
+    //   );
+    // }
+
+    events.forEach((event) => {
+      let dateTime = new Date(Date.parse(eventObjectList[e].starttime));
 
       messageData.message.attachment.payload.elements.push(
         {
-          title: eventObjectList[e].name,
-          subtitle: dateToReadableString(dateTime) + location,
+          title: event.title,
+          subtitle: dateToReadableString(dateTime),
           item_url: item_url,
-          image_url: eventObjectList[e].coverPicture,
+          image_url: event.coverPicture,
           buttons: [{
             type: 'web_url',
             url: item_url,
@@ -114,8 +136,7 @@ const sender = {
           ],
         }
       );
-    }
-
+    })
     callSendAPI(messageData);
   },
 
