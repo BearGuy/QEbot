@@ -10,14 +10,13 @@ let sender = require('../helper/send-helper');
 // This will contain all user sessions.
 // Each session has an entry:
 // sessionId -> {fbid: facebookUserId, context: sessionState}
-const sessions = {};
 
 // Our bot actions
 const actions = {
-  send({sessionId}, {text}) {
+  send({sessionId}, {text}, {context}) {
     // Our bot has something to say!
     // Let's retrieve the Facebook user whose session belongs to
-    const recipientId = sessions[sessionId].fbid;
+    const recipientId = context.__fbid__ || sessions[sessionId].fbid;
     if (recipientId) {
       // Yay, we found our recipient!
       // Let's forward our bot response to her.
