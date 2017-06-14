@@ -1,10 +1,14 @@
 var express = require("express");
 var request = require("request");
 var bodyParser = require("body-parser");
+
+const Wit = require('node-wit').Wit;
+const log = require('node-wit').log;
 //var wit = require('./wit/bot');
 
 //const sessions = require('./sessions');
 
+var qremAPI = require('../http/http-qrem');
 var sendHelper = require('./helper/send-helper');
 
 var app = express();
