@@ -1,4 +1,5 @@
 let request = require('request');
+var timeHelper = require('./time-helper');
 
 const sender = {
   sendTextMessage(recipientId, messageText, quickReplies) {
@@ -122,7 +123,7 @@ const sender = {
       messageData.message.attachment.payload.elements.push(
         {
           title: event.title,
-          subtitle: dateToReadableString(dateTime),
+          subtitle: timeHelper.dateToReadableString(dateTime),
           item_url: item_url,
           image_url: event.coverPicture,
           buttons: [{
@@ -164,7 +165,7 @@ const sender = {
       messageData.message.attachment.payload.elements.push(
         {
           title: events[e].title,
-          subtitle: dateToReadableString(dateTime), //+ "\n" + location,
+          subtitle: timeHelper.dateToReadableString(dateTime), //+ "\n" + location,
           item_url: events[e].item_url,
           image_url: events[e].image_url,
           buttons: [{
