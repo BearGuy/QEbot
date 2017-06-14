@@ -181,7 +181,7 @@ const sender = {
     })
     //}
 
-    this.callSendAPI(context._fbid_, messageData);
+    this.callSendAPI(recipientId, messageData);
   },
 
   sendGenericMessage(recipientId) {
