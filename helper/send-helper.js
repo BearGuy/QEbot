@@ -159,19 +159,19 @@ const sender = {
     console.log('These are the events');
     console.log(events);
     for (let e in events) {
-    //Array.from(events).forEach((event) => {
-      let dateTime = new Date(Date.parse(events[e].startTime));
+    Array.from(events).forEach((event) => {
+      let dateTime = new Date(Date.parse(event.startTime));
       //let location = eventObjectList[e].location.city;
 
       messageData.message.attachment.payload.elements.push(
         {
-          title: events[e].title,
+          title: event.title,
           subtitle: timeHelper.dateToReadableString(dateTime), //+ "\n" + location,
-          item_url: events[e].item_url,
-          image_url: events[e].image_url,
+          item_url: event.item_url,
+          image_url: event.image_url,
           buttons: [{
             type: 'web_url',
-            url: events[e].item_url,
+            url: event.item_url,
             title: 'Learn More',
           },
           {

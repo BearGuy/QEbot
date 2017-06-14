@@ -231,7 +231,7 @@ const actions = {
 
         console.log(sessions[sessionId]);
         //sessions[sessionId].fbid
-        sendHelper.sendEventGenericMessage(context._fbid_, context.events);
+        sendHelper.sendEventGenericMessage(context._fbid_, context.events.data);
 
         return context;
       })
