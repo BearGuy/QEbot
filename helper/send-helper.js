@@ -181,7 +181,7 @@ const sender = {
     })
     //}
 
-    this.callSendAPI(recipientId, messageData);
+    this.callSendAPI(messageData);
   },
 
   sendGenericMessage(recipientId) {
