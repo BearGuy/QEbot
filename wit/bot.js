@@ -102,7 +102,9 @@ const actions = {
       .then(resp => resp.data)
       .then((events) => {
         console.log(events);
-        context.events = JSON.parse(events); //.slice(0,5)//[rand_id];
+        let eventsArray = [];
+        eventsArray = events;
+        context.events = eventsArray//JSON.parse(events); //.slice(0,5)//[rand_id];
 
         console.log(sessions[sessionId]);
 
