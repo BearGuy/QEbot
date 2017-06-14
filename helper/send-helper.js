@@ -140,7 +140,7 @@ const sender = {
     this.this.callSendAPI(messageData);
   },
 
-  sendEventGenericMessage(recipientId, eventObjectList) {
+  sendEventGenericMessage(recipientId, events) {
    var messageData = {
       recipient: {
         id: recipientId
@@ -156,20 +156,20 @@ const sender = {
       }
     };
 
-    for (let e in eventObjectList) {
-
-      let dateTime = new Date(Date.parse(eventObjectList[e].startTime));
+    //for (let e in events) {
+    events.forEach((event) => {
+      let dateTime = new Date(Date.parse(event.startTime));
       //let location = eventObjectList[e].location.city;
 
       messageData.message.attachment.payload.elements.push(
         {
-          title: eventObjectList[e].title,
-          subtitle: dateToReadableString(dateTime) //+ "\n" + location,
-          item_url: eventObjectList[e].item_url,
-          image_url: eventObjectList[e].image_url,
+          title: event.title,
+          subtitle: dateToReadableString(dateTime), //+ "\n" + location,
+          item_url: event.item_url,
+          image_url: event.image_url,
           buttons: [{
             type: 'web_url',
-            url: eventObjectList[e].item_url,
+            url: event.item_url,
             title: 'Learn More',
           },
           {
@@ -178,7 +178,8 @@ const sender = {
           ],
         }
       );
-    }
+    })
+    //}
 
     this.callSendAPI(messageData);
   },
