@@ -107,7 +107,7 @@ const actions = {
 
         sendHelper.sendEventGenericMessage(sessions[sessionId].fbid, context.events);
 
-        //return context;
+        return context;
       })
 
 
