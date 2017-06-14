@@ -156,7 +156,8 @@ const sender = {
         }
       }
     };
-
+    console.log('These are the events');
+    console.log(events);
     for (let e in events) {
     //Array.from(events).forEach((event) => {
       let dateTime = new Date(Date.parse(events[e].startTime));
