@@ -157,7 +157,7 @@ const sender = {
     };
 
     //for (let e in events) {
-    events.forEach((event) => {
+    Array.from(events).forEach((event) => {
       let dateTime = new Date(Date.parse(event.startTime));
       //let location = eventObjectList[e].location.city;
 
