@@ -159,12 +159,12 @@ const sender = {
     for (let e in eventObjectList) {
 
       let dateTime = new Date(Date.parse(eventObjectList[e].startTime));
-      let location = eventObjectList[e].location.city;
+      //let location = eventObjectList[e].location.city;
 
       messageData.message.attachment.payload.elements.push(
         {
           title: eventObjectList[e].title,
-          subtitle: dateToReadableString(dateTime) + "\n" + location,
+          subtitle: dateToReadableString(dateTime) //+ "\n" + location,
           item_url: eventObjectList[e].item_url,
           image_url: eventObjectList[e].image_url,
           buttons: [{
