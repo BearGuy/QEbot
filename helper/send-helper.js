@@ -248,7 +248,7 @@ const sender = {
           messageId, recipientId);
       } else {
         console.error("Unable to send message.");
-        console.error('This is the response: ' + response);
+        console.error(response);
         console.error('THis is the error: ' + error);
       }
     });
