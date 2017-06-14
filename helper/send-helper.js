@@ -180,8 +180,8 @@ const sender = {
           ],
         }
       );
-    //})
-    }
+    })
+   // }
 
     this.callSendAPI(messageData);
   },
