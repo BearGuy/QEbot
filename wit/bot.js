@@ -101,7 +101,8 @@ const actions = {
     return qremAPI.get('/events')
       .then(resp => resp.data)
       .then((events) => {
-        context.events = events.slice(0,5);//[rand_id];
+        console.log(events);
+        context.events = events //.slice(0,5);//[rand_id];
 
         console.log(sessions[sessionId]);
 
