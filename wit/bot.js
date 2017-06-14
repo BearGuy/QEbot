@@ -98,7 +98,7 @@ const actions = {
   },
 
   getEvents({sessionId, context, entities}){
-    qremAPI.get('/events')
+    return qremAPI.get('/events')
       .then(resp => resp.data)
       .then((events) => {
         context.events = events.slice(0,5);//[rand_id];
@@ -107,22 +107,22 @@ const actions = {
 
         sendHelper.sendEventGenericMessage(sessions[sessionId].fbid, context.events);
 
-        return resolve(context);
+        return context;
       })
 
 
-    return new Promise(function(resolve, reject) {
-      //console.log("we exist");
-      //console.log(events.slice(0,3))
-      //var rand_id = Math.floor(Math.random() * (events.length));
-      context.events = events.slice(0,5);//[rand_id];
+    // return new Promise(function(resolve, reject) {
+    //   //console.log("we exist");
+    //   //console.log(events.slice(0,3))
+    //   //var rand_id = Math.floor(Math.random() * (events.length));
+    //   context.events = events.slice(0,5);//[rand_id];
 
-      console.log(sessions[sessionId]);
+    //   console.log(sessions[sessionId]);
 
-      sendEventGenericMessage(sessions[sessionId].fbid, context.events);
+    //   sendEventGenericMessage(sessions[sessionId].fbid, context.events);
 
-      return resolve(context);
-    });
+    //   return resolve(context);
+    // });
   },
 
   getEventCategories({context, entities}){
