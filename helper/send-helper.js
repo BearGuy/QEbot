@@ -156,20 +156,20 @@ const sender = {
       }
     };
 
-    //for (let e in events) {
-    Array.from(events).forEach((event) => {
-      let dateTime = new Date(Date.parse(event.startTime));
+    for (let e in events) {
+    //Array.from(events).forEach((event) => {
+      let dateTime = new Date(Date.parse(events[e].startTime));
       //let location = eventObjectList[e].location.city;
 
       messageData.message.attachment.payload.elements.push(
         {
-          title: event.title,
+          title: events[e].title,
           subtitle: dateToReadableString(dateTime), //+ "\n" + location,
-          item_url: event.item_url,
-          image_url: event.image_url,
+          item_url: events[e].item_url,
+          image_url: events[e].image_url,
           buttons: [{
             type: 'web_url',
-            url: event.item_url,
+            url: events[e].item_url,
             title: 'Learn More',
           },
           {
@@ -178,8 +178,8 @@ const sender = {
           ],
         }
       );
-    })
-    //}
+    //})
+    }
 
     this.callSendAPI(messageData);
   },
