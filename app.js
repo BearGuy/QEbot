@@ -8,7 +8,7 @@ const log = require('node-wit').log;
 
 //const sessions = require('./sessions');
 
-var qremAPI = require('../http/http-qrem');
+var qremAPI = require('./http/http-qrem');
 var sendHelper = require('./helper/send-helper');
 
 var app = express();
