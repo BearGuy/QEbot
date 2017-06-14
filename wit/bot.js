@@ -107,8 +107,8 @@ const actions = {
         context.events = eventsArray//JSON.parse(events); //.slice(0,5)//[rand_id];
 
         console.log(sessions[sessionId]);
-
-        sendHelper.sendEventGenericMessage(sessions[sessionId].fbid, context.events);
+        //sessions[sessionId].fbid
+        sendHelper.sendEventGenericMessage(context._fbid_, context.events);
 
         return context;
       })
