@@ -177,6 +177,7 @@ function receivedMessage(event) {
               // }
 
               // Updating the user's current session state
+              sendHelper.sendEventQuickReplies(senderId);
               sessions[sessionId].context = context;
             })
             .catch((err) => {
