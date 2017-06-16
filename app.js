@@ -137,8 +137,8 @@ function receivedMessage(event) {
         sendHelper.sendLocationPrompt(sessions[sessionId].fbid);
         // We retrieve the user's current session, or create one if it doesn't exist
         // This is needed for our bot to figure out the conversation history
-     } else if (messageText === 'Popular' || messageText === 'concerts' || messageText === 'movies',
-        || messageText === 'adult_socials' || messageText === 'all_ages_socials' || messageText === 'arts_and_theater'
+     } else if (messageText === 'Popular' || messageText === 'concerts' || messageText === 'movies', \
+        || messageText === 'adult_socials' || messageText === 'all_ages_socials' || messageText === 'arts_and_theater' \
         || messageText === 'educations' || messageText === 'health' || messageText === 'sports'){
 
         qremAPI.get(`/events?category=${messageText}`)
