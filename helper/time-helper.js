@@ -23,6 +23,7 @@ function datetimeToUnixtime(dateTime){
 
 function sqlTimestampToDate(sql_timestamp) {
   // Split timestamp into [ Y, M, D, h, m, s ]
+  console.log(sql_timestamp);
   var t = sql_timestamp.split(/[- :]/);
 
   // Apply each element to the Date function

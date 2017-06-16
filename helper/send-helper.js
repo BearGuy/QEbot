@@ -45,6 +45,7 @@ const sender = {
   },
 
   sendEventQuickReplies(recipientId) {
+    console.log("Does this trigger?");
     var choiceData = {
       "recipient":{
         "id": recipientId
@@ -56,55 +57,55 @@ const sender = {
             "content_type":"text",
             "title":"Popular",
             "payload":"Popular",
-            "image_url": "assets/events_icon.png"
+            "image_url": "http://fa2png.io/r/foundation-icon-fonts/magnifying-glass/?color=007dff&margin=24&size=24"
           },
           {
             "content_type":"text",
             "title":"Concerts",
             "payload":"concerts",
-            "image_url": "assets/concerts_icon.png"
+            "image_url": "http://fa2png.io/r/font-awesome/music/?color=007dff&margin=24&size=24"
           },
           {
             "content_type":"text",
             "title":"Movies",
             "payload":"movies",
-            "image_url": "assets/movie_icon.png"
+            "image_url": "http://fa2png.io/r/icomoon-free/video-camera/?color=007dff&margin=24&size=24"
           },
           {
             "content_type":"text",
             "title":"19+ Socials",
             "payload":"adult_socials",
-            "image_url": "assets/19plus_icon.png"
+            "image_url": "http://fa2png.io/r/icomoon-free/glass2/?color=007dff&margin=24&size=24"
           },
           {
             "content_type":"text",
             "title":"All Socials",
             "payload":"all_ages_socials",
-            "image_url": "assets/child_icon.png"
+            "image_url": "http://fa2png.io/r/font-awesome/child/?color=007dff&margin=24&size=24"
           },
           {
             "content_type":"text",
             "title":"Arts",
             "payload":"arts_and_theater",
-            "image_url": "assets/arts_icon.png"
+            "image_url": "http://fa2png.io/r/ionicons/paintbrush/?color=007dff&margin=24&size=24"
           },
           {
             "content_type":"text",
             "title":"Educational",
             "payload":"educational",
-            "image_url": "assets/edu_icon.png"
+            "image_url": "http://fa2png.io/r/font-awesome/graduation-cap/?color=007dff&margin=24&size=24"
           },
           {
             "content_type":"text",
             "title":"Health",
             "payload":"health",
-            "image_url": "assets/health_icon.png"
+            "image_url": "http://fa2png.io/r/map-icons/health/?color=007dff&margin=24&size=24"
           },
           {
             "content_type":"text",
             "title":"sports",
             "payload":"sports",
-            "image_url": "assets/sport_icon.png"
+            "image_url": "http://fa2png.io/r/font-awesome/soccer-ball-o/?color=007dff&margin=24&size=24"
           },
         ]
       }
