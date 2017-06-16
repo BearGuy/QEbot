@@ -45,7 +45,6 @@ const sender = {
   },
 
   sendEventQuickReplies(recipientId) {
-    console.log("Does this trigger?");
     var choiceData = {
       "recipient":{
         "id": recipientId
@@ -235,7 +234,7 @@ const sender = {
       messageData.message.attachment.payload.elements.push(
         {
           title: event.title,
-          subtitle: timeHelper.sqlTimestampToDate(event.startTime), //+ "\n" + location,
+          subtitle: timeHelper.sqlTimestampToDate(event.starttime) || event.starttime, //+ "\n" + location,
           item_url: event.item_url,
           image_url: event.image_url,
           buttons: [{
