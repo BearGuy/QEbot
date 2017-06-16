@@ -139,7 +139,7 @@ function receivedMessage(event) {
         // This is needed for our bot to figure out the conversation history
      } else if (messageText === 'Popular' || messageText === 'concerts' || messageText === 'movies' ||
         messageText === 'adult_socials' || messageText === 'all_ages_socials' || messageText === 'arts_and_theater'||
-        messageText === 'educations' || messageText === 'health' || messageText === 'sports'){
+        messageText === 'education' || messageText === 'health' || messageText === 'sports'){
 
         qremAPI.get(`/events?category=${messageText}`)
         .then(resp => resp.data)

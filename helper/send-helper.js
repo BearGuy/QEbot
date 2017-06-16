@@ -79,7 +79,7 @@ const sender = {
           },
           {
             "content_type":"text",
-            "title":"All Socials",
+            "title":"All Ages Socials",
             "payload":"all_ages_socials",
             "image_url": "https://s3.ca-central-1.amazonaws.com/queens-events/icons/child_icon.png"
           },
@@ -103,7 +103,7 @@ const sender = {
           },
           {
             "content_type":"text",
-            "title":"sports",
+            "title":"Sports",
             "payload":"sports",
             "image_url": "https://s3.ca-central-1.amazonaws.com/queens-events/icons/sports_icon.png"
           },
@@ -229,13 +229,13 @@ const sender = {
     console.log(events);
     //for (let e in events) {
     Array.from(events).forEach((event) => {
-      let dateTime = new Date(Date.parse(event.startTime));
+      //let dateTime = new Date(Date.parse(event.startTime));
       //let location = eventObjectList[e].location.city;
 
       messageData.message.attachment.payload.elements.push(
         {
           title: event.title,
-          subtitle: timeHelper.sqlTimestampToDate(dateTime), //+ "\n" + location,
+          subtitle: timeHelper.sqlTimestampToDate(event.dateTime), //+ "\n" + location,
           item_url: event.item_url,
           image_url: event.image_url,
           buttons: [{
