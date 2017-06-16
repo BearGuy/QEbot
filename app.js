@@ -87,6 +87,7 @@ function processPostback(event) {
       }
       var message = greeting + "My name is QEbot Bot. I can tell you various details regarding events. What events would you like to know about?";
       sendMessage(senderId, {text: message});
+      sendHelper.sendEventQuickReplies(senderId);
     });
   }
 }

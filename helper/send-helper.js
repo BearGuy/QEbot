@@ -44,6 +44,74 @@ const sender = {
     this.callSendAPI(messageData);
   },
 
+  sendEventQuickReplies(recipientId) {
+    var choiceData = {
+      "recipient":{
+        "id": recipientId
+      },
+      "message":{
+        "text":"Pick an event filter:",
+        "quick_replies":[
+          {
+            "content_type":"text",
+            "title":"Popular",
+            "payload":"Popular",
+            "image_url": "assets/events_icon.png"
+          },
+          {
+            "content_type":"text",
+            "title":"Concerts",
+            "payload":"Concerts",
+            "image_url": "assets/concerts_icon.png"
+          },
+          {
+            "content_type":"text",
+            "title":"Movies",
+            "payload":"Movies",
+            "image_url": "assets/movie_icon.png"
+          },
+          {
+            "content_type":"text",
+            "title":"19+ Socials",
+            "payload":"adult_socials",
+            "image_url": "assets/19plus_icon.png"
+          },
+          {
+            "content_type":"text",
+            "title":"All Socials",
+            "payload":"all_ages_socials",
+            "image_url": "assets/child_icon.png"
+          },
+          {
+            "content_type":"text",
+            "title":"Arts",
+            "payload":"arts_and_theater",
+            "image_url": "assets/arts_icon.png"
+          },
+          {
+            "content_type":"text",
+            "title":"Educational",
+            "payload":"educational",
+            "image_url": "assets/edu_icon.png"
+          },
+          {
+            "content_type":"text",
+            "title":"Health",
+            "payload":"health",
+            "image_url": "assets/health_icon.png"
+          },
+          {
+            "content_type":"text",
+            "title":"sports",
+            "payload":"sports",
+            "image_url": "assets/sport_icon.png"
+          },
+        ]
+      }
+    }
+    this.callSendAPI(choiceData);
+  },
+
   sendLocalEventFilterChoice(recipientId) {
     var choiceData = {
       "recipient":{
