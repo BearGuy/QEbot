@@ -57,55 +57,55 @@ const sender = {
             "content_type":"text",
             "title":"Popular",
             "payload":"Popular",
-            "image_url": "http://fa2png.io/r/foundation-icon-fonts/magnifying-glass/?color=007dff&margin=24&size=24"
+            "image_url": "https://s3.ca-central-1.amazonaws.com/queens-events/icons/events_icon.png"
           },
           {
             "content_type":"text",
             "title":"Concerts",
             "payload":"concerts",
-            "image_url": "http://fa2png.io/r/font-awesome/music/?color=007dff&margin=24&size=24"
+            "image_url": "https://s3.ca-central-1.amazonaws.com/queens-events/icons/concert_icon.png"
           },
           {
             "content_type":"text",
             "title":"Movies",
             "payload":"movies",
-            "image_url": "http://fa2png.io/r/icomoon-free/video-camera/?color=007dff&margin=24&size=24"
+            "image_url": "https://s3.ca-central-1.amazonaws.com/queens-events/icons/movie_icon.png"
           },
           {
             "content_type":"text",
             "title":"19+ Socials",
             "payload":"adult_socials",
-            "image_url": "http://fa2png.io/r/icomoon-free/glass2/?color=007dff&margin=24&size=24"
+            "image_url": "https://s3.ca-central-1.amazonaws.com/queens-events/icons/19plus_icon.png"
           },
           {
             "content_type":"text",
             "title":"All Socials",
             "payload":"all_ages_socials",
-            "image_url": "http://fa2png.io/r/font-awesome/child/?color=007dff&margin=24&size=24"
+            "image_url": "https://s3.ca-central-1.amazonaws.com/queens-events/icons/child_icon.png"
           },
           {
             "content_type":"text",
             "title":"Arts",
             "payload":"arts_and_theater",
-            "image_url": "http://fa2png.io/r/ionicons/paintbrush/?color=007dff&margin=24&size=24"
+            "image_url": "https://s3.ca-central-1.amazonaws.com/queens-events/icons/arts_icon.png"
           },
           {
             "content_type":"text",
             "title":"Educational",
             "payload":"educational",
-            "image_url": "http://fa2png.io/r/font-awesome/graduation-cap/?color=007dff&margin=24&size=24"
+            "image_url": "https://s3.ca-central-1.amazonaws.com/queens-events/icons/edu_icon.png"
           },
           {
             "content_type":"text",
             "title":"Health",
             "payload":"health",
-            "image_url": "http://fa2png.io/r/map-icons/health/?color=007dff&margin=24&size=24"
+            "image_url": "https://s3.ca-central-1.amazonaws.com/queens-events/icons/health_icon.png"
           },
           {
             "content_type":"text",
             "title":"sports",
             "payload":"sports",
-            "image_url": "http://fa2png.io/r/font-awesome/soccer-ball-o/?color=007dff&margin=24&size=24"
+            "image_url": "https://s3.ca-central-1.amazonaws.com/queens-events/icons/sports_icon.png"
           },
         ]
       }
