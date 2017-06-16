@@ -61,13 +61,13 @@ const sender = {
           {
             "content_type":"text",
             "title":"Concerts",
-            "payload":"Concerts",
+            "payload":"concerts",
             "image_url": "assets/concerts_icon.png"
           },
           {
             "content_type":"text",
             "title":"Movies",
-            "payload":"Movies",
+            "payload":"movies",
             "image_url": "assets/movie_icon.png"
           },
           {
@@ -234,7 +234,7 @@ const sender = {
       messageData.message.attachment.payload.elements.push(
         {
           title: event.title,
-          subtitle: timeHelper.dateToReadableString(dateTime), //+ "\n" + location,
+          subtitle: timeHelper.sqlTimestampToDate(dateTime), //+ "\n" + location,
           item_url: event.item_url,
           image_url: event.image_url,
           buttons: [{

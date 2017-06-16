@@ -137,6 +137,23 @@ function receivedMessage(event) {
         sendHelper.sendLocationPrompt(sessions[sessionId].fbid);
         // We retrieve the user's current session, or create one if it doesn't exist
         // This is needed for our bot to figure out the conversation history
+     } else if (messageText === 'Popular' || messageText === 'concerts' || messageText === 'movies',
+        || messageText === 'adult_socials' || messageText === 'all_ages_socials' || messageText === 'arts_and_theater'
+        || messageText === 'educations' || messageText === 'health' || messageText === 'sports'){
+
+        qremAPI.get(`/events?category=${messageText}`)
+        .then(resp => resp.data)
+        .then((events) => {
+          console.log(events);
+          let eventsArray = [];
+          eventsArray = events;
+          context.events = eventsArray//JSON.parse(events); //.slice(0,5)//[rand_id];
+
+          console.log(sessions[sessionId]);
+          //sessions[sessionId].fbid
+          sendHelper.sendEventGenericMessage(sessions[sessionId].fbid, events.data);
+        })
+
      } else {
         wit.runActions(
               sessionId, // the user's current session
@@ -236,7 +253,7 @@ const actions = {
 
         return context;
       })
-
+  },
 
     // return new Promise(function(resolve, reject) {
     //   //console.log("we exist");
@@ -250,7 +267,6 @@ const actions = {
 
     //   return resolve(context);
     // });
-  },
 
   findAttributeByEvent({sessionId, context, entities}) {
     return new Promise(function(resolve, reject) {

@@ -21,6 +21,17 @@ function datetimeToUnixtime(dateTime){
   return dateTime
 }
 
+function sqlTimestampToDate(sql_timestamp) {
+  // Split timestamp into [ Y, M, D, h, m, s ]
+  var t = sql_timestamp.split(/[- :]/);
+
+  // Apply each element to the Date function
+  var d = new Date(Date.UTC(t[0], t[1]-1, t[2], t[3], t[4], t[5]));
+
+  return d
+  // -> Wed Jun 09 2010 14:12:01 GMT+0100 (BST)
+}
+
 function withinDateRange(dateTime1, dateTimeRange1, dateTimeRange2) {
   dateTime1 = new Date(Date.parse(dateTime1))
   dateTimeRange1 = new Date(Date.parse(dateTimeRange1))
@@ -36,4 +47,4 @@ function dateToReadableString(timestamp) {
   return result.toLocaleString('en-US', formattingOptions) + " at " + result.toLocaleTimeString({hour: 'numeric', minute: '2-digit', timeZoneName: 'short'});
 }
 
-module.exports = { sameDate, datetimeToUnixtime, withinDateRange, dateToReadableString }
+module.exports = { sameDate, datetimeToUnixtime, withinDateRange, dateToReadableString, sqlTimestampToDate }
