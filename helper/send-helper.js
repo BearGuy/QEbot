@@ -235,7 +235,7 @@ const sender = {
       messageData.message.attachment.payload.elements.push(
         {
           title: event.title,
-          subtitle: timeHelper.sqlTimestampToDate(event.dateTime), //+ "\n" + location,
+          subtitle: timeHelper.sqlTimestampToDate(event.startTime), //+ "\n" + location,
           item_url: event.item_url,
           image_url: event.image_url,
           buttons: [{
