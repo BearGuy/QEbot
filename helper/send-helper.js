@@ -74,7 +74,7 @@ const sender = {
             "content_type":"text",
             "title":"19+ Socials",
             "payload":"adult_socials",
-            "image_url": "https://s3.ca-central-1.amazonaws.com/queens-events/icons/19plus_icon.png"
+            "image_url": "https://s3.ca-central-1.amazonaws.com/queens-events/icons/19+social_icon.png"
           },
           {
             "content_type":"text",
